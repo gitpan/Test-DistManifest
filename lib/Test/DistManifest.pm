@@ -1,17 +1,12 @@
 # Test::DistManifest
 #  Tests that your manifest matches the distribution as it exists.
 #
-# $Id: DistManifest.pm 11 2008-12-25 23:44:13Z frequency $
+# $Id: DistManifest.pm 5241 2009-02-08 20:55:00Z FREQUENCY@cpan.org $
 #
 # Copyright (C) 2008 by Jonathan Yu <frequency@cpan.org>
 #
-# This package is distributed under a triple licensing scheme. You are
-# entitled to enjoy the covenants of, at your option:
-# (1) The Free Software Foundation's GNU General Public License, version 3 or
-#     later; or
-# (2) The Artistic License, version 2.0 or later; or
-# (3) The terms that Perl itself is licensed under (At time of writing, this
-#     is a dual license of the GNU GPL and the Artistic License).
+# This package is distributed with the same licensing terms as Perl itself.
+# For additional information, please read the included `LICENSE' file.
 
 package Test::DistManifest;
 
@@ -26,11 +21,11 @@ exists, excluding those in your MANIFEST.SKIP
 
 =head1 VERSION
 
-Version 1.0 ($Id: DistManifest.pm 11 2008-12-25 23:44:13Z frequency $)
+Version 1.1.0 ($Id: DistManifest.pm 5241 2009-02-08 20:55:00Z FREQUENCY@cpan.org $)
 
 =cut
 
-use version; our $VERSION = qv('1.0');
+use version; our $VERSION = qv('1.1.0');
 
 =head1 EXPORTS
 
@@ -45,8 +40,8 @@ By default, this module exports the following functions:
 =cut
 
 # File management commands
-use Cwd 'getcwd';
-use File::Spec; # Portability
+use Cwd ();
+use File::Spec (); # Portability
 use File::Find (); # Traverse the filesystem tree
 
 use Module::Manifest ();
@@ -126,11 +121,11 @@ sub manifest_ok {
   my $manifile = shift || 'MANIFEST';
   my $skipfile = shift || 'MANIFEST.SKIP';
 
-  my $root = getcwd(); # the regular expression is Build.PL's Cwd
+  my $root = Cwd::getcwd(); # this is Build.PL's Cwd
   my $manifest = Module::Manifest->new;
 
   unless ($test->has_plan) {
-    $test->plan(tests => 4);
+    $test->plan(tests => 5);
   }
 
   # Try to parse the MANIFEST and MANIFEST.SKIP files
@@ -195,9 +190,17 @@ sub manifest_ok {
 
   # Reset the flag and test $manifest->files now
   $flag = 1;
+  my @circular = (); # for detecting circular logic
   foreach my $path ($manifest->files) {
     # Skip the path if it was seen twice (the expected condition)
     next if ($seen{$path} == 2);
+
+    # If the file should exist but is passed by MANIFEST.SKIP, we have
+    # a strange circular logic condition.
+    if ($manifest->skipped($path)) {
+      push (@circular, $path);
+      next;
+    }
 
     # Oh no, we have files in $manifest->files not in @files
     if ($flag == 1) {
@@ -208,12 +211,22 @@ sub manifest_ok {
   }
   $test->ok($flag, 'All files listed in MANIFEST exist on disk');
 
+  # Test for circular dependencies
+  $flag = (scalar @circular == 0) ? 1 : 0;
+  if (not $flag) {
+    $test->diag('MANIFEST and MANIFEST.SKIP have circular dependencies:');
+    foreach my $path (@circular) {
+      $test->diag($path);
+    }
+  }
+  $test->ok($flag, 'No files are in both MANIFEST and MANIFEST.SKIP');
+
   return;
 }
 
 =head1 GUTS
 
-This module internally plans 3 tests:
+This module internally plans 5 tests:
 
 =over
 
@@ -235,6 +248,12 @@ Check which files are specified in B<MANIFEST> but do not exist on the disk.
 This usually occurs when one deletes a test or similar script from the
 distribution, or accidentally moves it.
 
+=item 4
+
+Check which files are specified in both B<MANIFEST> and B<MANIFEST.SKIP>. This
+is clearly an unsatisfiable condition, since the file in question cannot be
+expected to be included while also simultaneously ignored.
+
 =back
 
 If you want to run tests on multiple different MANIFEST files, you can simply
@@ -254,8 +273,8 @@ future.
 
 Example code:
 
-  use Test::DistManifest tests => 4;
-  manifest_ok(); # 3 tests
+  use Test::DistManifest tests => 5;
+  manifest_ok(); # 4 tests
   ok(1, 'is 1 true?');
 
 =head1 AUTHOR
@@ -272,6 +291,10 @@ Your name here ;-)
 
 =item * Thanks to Adam Kennedy E<lt>adamk@cpan.orgE<gt>, developer of
 Module::Manifest, which is used in this module.
+
+=item * Thanks to Apocalypse E<lt>apocal@cpan.orgE<gt>, for helping me track
+down an obscure bug caused by circular dependencies: when files are expected
+by B<MANIFEST> but explictly skipped by B<MANIFEST.SKIP>.
 
 =back
 
@@ -301,7 +324,26 @@ L<http://search.cpan.org/dist/Test-Dist-Manifest>
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-Dist-Manifest>
 
+=item * CPAN Testing Service (Kwalitee Tests)
+
+L<http://cpants.perl.org/dist/overview/Test-DistManifest>
+
+=item * Test::DistManifest's Subversion repository
+
+L<http://svn.ali.as/cpan/trunk/Test-DistManifest>
+
 =back
+
+=head1 REPOSITORY
+
+You can access the most recent development version of this module at:
+
+L<http://svn.ali.as/cpan/trunk/Test-DistManifest>
+
+If you are a CPAN developer and would like to make modifications to the code
+base, please contact Adam Kennedy E<lt>adamk@cpan.orgE<gt>, the repository
+administrator. I only ask that you contact me first to discuss the changes you
+wish to make to the distribution.
 
 =head1 FEEDBACK
 
@@ -339,30 +381,24 @@ This module has not been tested very thoroughly with Unicode.
 
 =back
 
-=head1 COPYRIGHT
+=head1 LICENSE
 
-Copyright (C) 2008 by Jonathan Yu <frequency@cpan.org>
+Copyright (C) 2008-2009 by Jonathan Yu <frequency@cpan.org>
 
-=head2 LICENSE
-
-This package is distributed under a triple licensing scheme. You are entitled
-to enjoy the covenants of, at your option:
+This package is distributed under the same terms as Perl itself. At time of
+writing, this means that you are entitled to enjoy the covenants of, at your
+option:
 
 =over
 
 =item 1
 
-The Free Software Foundation's GNU General Public License (GPL), version 3 or
+The Free Software Foundation's GNU General Public License (GPL), version 2 or
 later; or
 
 =item 2
 
-The Perl Foundation's Artistic License, version 2.0 or later; or
-
-=item 3
-
-The terms that Perl itself is licensed under (at time of writing, this is a
-dual license of the GNU General Public License and the Perl Artistic License).
+The Perl Foundation's Artistic License, version 2.0 or later
 
 =back
 

@@ -1,0 +1,80 @@
+2009-03-12  Jonathan Yu <frequency@cpan.org>
+
+	Modified Changelog name to "Changes" (instead of CHANGES)
+
+2009-03-12  Jonathan Yu <frequency@cpan.org>
+
+	- Updated Makefile.PL
+	- Removed CHANGES file; I plan to now generate the Changes from the svn log using gnuify-changelog.pl
+
+2009-02-27  Jonathan Yu <frequency@cpan.org>
+
+2009-02-26  Jonathan Yu <frequency@cpan.org>
+
+	Added the tests to MANIFEST
+
+2009-02-20  Jonathan Yu <frequency@cpan.org>
+
+	- Added some tests
+	- Renamed MANIFEST.SKIP.CIRCULAR for portability; the new name is CIRCULAR.SKIP
+	- TODO: rearrange the module so that it is possible to test the MANFIEST against files not actually on disk
+
+2009-02-20  Jonathan Yu <frequency@cpan.org>
+
+	Updated version in README
+
+2009-02-08  Jonathan Yu <frequency@cpan.org>
+
+	- Updated to version 1.1.0
+	- Updated the copyright date in POD
+	- Fixed Makefile.PL with requires + build_requires deps (ignore the recommended, which are author tests)
+
+2009-02-08  Jonathan Yu <frequency@cpan.org>
+
+	- Added a test for circular dependencies (those that exist in both MANIFEST and MANIFEST.SKIP)
+	- Updated core tests to match
+
+	Thanks Apocalypse!
+
+2009-02-08  Jonathan Yu <frequency@cpan.org>
+
+	Minor comment updates
+
+2009-02-08  Jonathan Yu <frequency@cpan.org>
+
+	Updated the POD and the README to reflect this repository's location
+
+2009-02-08  Jonathan Yu <frequency@cpan.org>
+
+	oops, forgot to update META-spec url too
+
+2009-02-08  Jonathan Yu <frequency@cpan.org>
+
+	Minor changes
+
+2009-02-08  Jonathan Yu <frequency@cpan.org>
+
+	- Added SVN repository address
+	- Updated META.yml to reflect changes
+	- Fixed version number in META.yml -> numeric "1.001000" style version numbering, to get around version.pm bugs
+
+2009-01-19  Jonathan Yu <frequency@cpan.org>
+
+	Updated svn:keyword property
+
+2009-01-17  Jonathan Yu <frequency@cpan.org>
+
+	- Replaced PerlCritic's POD section to enforce 'LICENSE' instead of 'COPYRIGHT' (which is used by CPANTS/Kwalitee)
+	- Removed Test::NoWarnings from the Signature test, which throws warnings on purpose.
+
+2009-01-17  Jonathan Yu <frequency@cpan.org>
+
+	Initial commit of Test::DistManifest
+
+2009-01-17  Jonathan Yu <frequency@cpan.org>
+
+	Added directories for Test::DistManifest and Video::FourCC::Info
+
+;; Local Variables:
+;; coding: utf-8
+;; End:

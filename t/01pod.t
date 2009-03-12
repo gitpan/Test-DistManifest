@@ -3,7 +3,7 @@
 # t/01pod.t
 #  Checks that POD commands are correct
 #
-# $Id: 01pod.t 5 2008-12-25 23:16:47Z frequency $
+# $Id: 01pod.t 4996 2009-01-19 21:05:47Z FREQUENCY@cpan.org $
 #
 # This test script is hereby released into the public domain.
 

@@ -3,7 +3,7 @@ NAME
     as it exists, excluding those in your MANIFEST.SKIP
 
 VERSION
-    Version 1.0 ($Id: README 6 2008-12-25 23:38:20Z frequency $)
+    Version 1.1.0 ($Id: README 5377 2009-02-21 04:20:33Z FREQUENCY@cpan.org $)
 
 EXPORTS
     By default, this module exports the following functions:
@@ -120,6 +120,17 @@ SUPPORT
     *   CPAN Request Tracker
 
         <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Test-Dist-Manifest>
+
+REPOSITORY
+
+    You can access the most recent development version of this module at:
+
+    L<http://svn.ali.as/cpan/trunk/Test-DistManifest>
+
+    If you are a CPAN developer and would like to make modifications to the
+    code base, please contact Adam Kennedy E<lt>adamk@cpan.orgE<gt>, the
+    repository administrator. I only ask that you contact me first to discuss
+    the changes you wish to make to the distribution.
 
 FEEDBACK
     Please send relevant comments, rotten tomatoes and suggestions directly
