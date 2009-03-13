@@ -3,7 +3,7 @@ NAME
     as it exists, excluding those in your MANIFEST.SKIP
 
 VERSION
-    Version 1.1.0 ($Id: README 5377 2009-02-21 04:20:33Z FREQUENCY@cpan.org $)
+    Version 1.1.1 ($Id: README 5621 2009-03-13 02:30:52Z FREQUENCY@cpan.org $)
 
 EXPORTS
     By default, this module exports the following functions:

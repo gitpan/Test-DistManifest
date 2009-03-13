@@ -1,5 +1,10 @@
 2009-03-12  Jonathan Yu <frequency@cpan.org>
 
+	- Added "^debian/" as a mask for MANIFEST.SKIP. This is where Debian package control files go, and so should not be considered part of the package. Hopefully this won't break anything :-)
+	- Upgraded to version 1.1.1
+
+2009-03-12  Jonathan Yu <frequency@cpan.org>
+
 	Modified Changelog name to "Changes" (instead of CHANGES)
 
 2009-03-12  Jonathan Yu <frequency@cpan.org>
