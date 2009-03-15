@@ -1,3 +1,21 @@
+2009-03-14  Jonathan Yu <frequency@cpan.org>
+
+	Updated prerequisite information in Build.PL and META.yml
+
+2009-03-14  Jonathan Yu <frequency@cpan.org>
+
+	- Add a more thorough description for the POD
+	- Fix dependencies in Build.PL and META.yml
+
+2009-03-14  Jonathan Yu <frequency@cpan.org>
+
+	Clarified licensing restrictions
+
+2009-03-12  Jonathan Yu <frequency@cpan.org>
+
+	- CIRCULAR.SKIP became out of sync with the real MANIFEST.SKIP, and so was causing problems with debian/
+	- Increment the version to 1.1.2 for release again...
+
 2009-03-12  Jonathan Yu <frequency@cpan.org>
 
 	- Added "^debian/" as a mask for MANIFEST.SKIP. This is where Debian package control files go, and so should not be considered part of the package. Hopefully this won't break anything :-)

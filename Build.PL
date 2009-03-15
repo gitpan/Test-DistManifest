@@ -3,9 +3,11 @@
 # Build.PL
 #  Script to build and install this distribution
 #
-# $Id: Build.PL 5421 2009-02-27 17:46:20Z FREQUENCY@cpan.org $
+# $Id: Build.PL 5639 2009-03-15 03:43:59Z FREQUENCY@cpan.org $
 #
-# This helper script is hereby released into the public domain.
+# All rights to this helper script are hereby disclaimed and its contents
+# released into the public domain by the author. Where this is not possible,
+# you may use this file under the same terms as Perl itself.
 
 use strict;
 use warnings;
@@ -54,13 +56,16 @@ my $builder = Module::Build->new(
   },
   recommends => {
     # Author tests
-    'Test::Perl::Critic'      => 0,
-    'Perl::Critic'            => 1.096,
-    'Test::YAML::Meta'        => 0,
-    'Test::Kwalitee'          => 1.01,
-    'Test::Signature'         => 0,
-    'Test::Pod'               => 1.14,
-    'Test::Pod::Coverage'     => 1.04,
+    'Test::Perl::Critic'        => 1.01,
+    'Perl::Critic'              => 1.096,
+    'Test::YAML::Meta'          => 0.11,
+    'Test::Kwalitee'            => 1.01,
+    'Test::Signature'           => 1.10,
+    'Test::Pod'                 => 1.14,
+    'Test::Pod::Coverage'       => 1.04,
+    'Test::Prereq::Build'       => 1.036,
+    'Test::Portability::Files'  => 0.05,
+    'Test::MinimumVersion'      => 0.008,
   },
   conflicts => {
   },

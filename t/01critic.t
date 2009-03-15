@@ -3,9 +3,11 @@
 # t/01critic.t
 #  Test the distribution using Perl::Critic for guidelines
 #
-# $Id: 01critic.t 5235 2009-02-08 17:16:27Z FREQUENCY@cpan.org $
+# $Id: 01critic.t 5633 2009-03-14 20:00:03Z FREQUENCY@cpan.org $
 #
-# This test script is hereby released into the public domain.
+# All rights to this test script are hereby disclaimed and its contents
+# released into the public domain by the author. Where this is not possible,
+# you may use this file under the same terms as Perl itself.
 
 use strict;
 use warnings;

@@ -1,7 +1,7 @@
 # Test::DistManifest
 #  Tests that your manifest matches the distribution as it exists.
 #
-# $Id: DistManifest.pm 5621 2009-03-13 02:30:52Z FREQUENCY@cpan.org $
+# $Id: DistManifest.pm 5634 2009-03-14 22:58:13Z FREQUENCY@cpan.org $
 #
 # Copyright (C) 2008 by Jonathan Yu <frequency@cpan.org>
 #
@@ -21,11 +21,11 @@ exists, excluding those in your MANIFEST.SKIP
 
 =head1 VERSION
 
-Version 1.1.1 ($Id: DistManifest.pm 5621 2009-03-13 02:30:52Z FREQUENCY@cpan.org $)
+Version 1.1.2 ($Id: DistManifest.pm 5634 2009-03-14 22:58:13Z FREQUENCY@cpan.org $)
 
 =cut
 
-use version; our $VERSION = qv('1.1.1');
+use version; our $VERSION = qv('1.1.2');
 
 =head1 EXPORTS
 
@@ -75,6 +75,26 @@ sub import {
 
 This module provides a simple method of testing that a MANIFEST matches the
 distribution.
+
+It tests three things:
+
+=over
+
+=item 1
+
+Everything in B<MANIFEST> exists
+
+=item 2
+
+Everything in the package is listed in B<MANIFEST>, or subsequently matches a
+regular expression mask in B<MANIFEST.SKIP>
+
+=item 3
+
+Nothing exists in B<MANIFEST> that also matches a mask in B<MANIFEST.SKIP>,
+so as to avoid an unsatisfiable dependency conditions
+
+=back
 
 =head1 SYNOPSIS
 
@@ -294,7 +314,7 @@ Module::Manifest, which is used in this module.
 
 =item * Thanks to Apocalypse E<lt>apocal@cpan.orgE<gt>, for helping me track
 down an obscure bug caused by circular dependencies: when files are expected
-by B<MANIFEST> but explictly skipped by B<MANIFEST.SKIP>.
+by MANIFEST but explictly skipped by MANIFEST.SKIP.
 
 =back
 
@@ -379,28 +399,21 @@ files actually exist on disk. I am planning for this to change in the future.
 
 This module has not been tested very thoroughly with Unicode.
 
+=item *
+
+This module does not produce any useful diagnostic messages in terms of how
+to correct the situation. Hopefully this will be obvious for anybody using
+the module; the emphasis should be on generating helpful error messages.
+
 =back
 
 =head1 LICENSE
 
 Copyright (C) 2008-2009 by Jonathan Yu <frequency@cpan.org>
 
-This package is distributed under the same terms as Perl itself. At time of
-writing, this means that you are entitled to enjoy the covenants of, at your
-option:
-
-=over
-
-=item 1
-
-The Free Software Foundation's GNU General Public License (GPL), version 2 or
-later; or
-
-=item 2
-
-The Perl Foundation's Artistic License, version 2.0 or later
-
-=back
+This package is distributed under the same terms as Perl itself. Please see
+the LICENSE file included in this distribution for full details of these
+terms.
 
 =head1 DISCLAIMER OF WARRANTY
 
