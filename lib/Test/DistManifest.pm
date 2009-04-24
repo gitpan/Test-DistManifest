@@ -1,9 +1,9 @@
 # Test::DistManifest
 #  Tests that your manifest matches the distribution as it exists.
 #
-# $Id: DistManifest.pm 5634 2009-03-14 22:58:13Z FREQUENCY@cpan.org $
+# $Id: DistManifest.pm 6602 2009-04-24 01:23:08Z FREQUENCY@cpan.org $
 #
-# Copyright (C) 2008 by Jonathan Yu <frequency@cpan.org>
+# Copyright (C) 2008-2009 by Jonathan Yu <frequency@cpan.org>
 #
 # This package is distributed with the same licensing terms as Perl itself.
 # For additional information, please read the included `LICENSE' file.
@@ -21,11 +21,11 @@ exists, excluding those in your MANIFEST.SKIP
 
 =head1 VERSION
 
-Version 1.1.2 ($Id: DistManifest.pm 5634 2009-03-14 22:58:13Z FREQUENCY@cpan.org $)
+Version 1.1.3 ($Id: DistManifest.pm 6602 2009-04-24 01:23:08Z FREQUENCY@cpan.org $)
 
 =cut
 
-use version; our $VERSION = qv('1.1.2');
+use version; our $VERSION = qv('1.1.3');
 
 =head1 EXPORTS
 
@@ -42,6 +42,7 @@ By default, this module exports the following functions:
 # File management commands
 use Cwd ();
 use File::Spec (); # Portability
+use File::Spec::Unix (); # To get UNIX-style paths
 use File::Find (); # Traverse the filesystem tree
 
 use Module::Manifest ();
@@ -51,6 +52,19 @@ my $test = Test::Builder->new;
 
 my @EXPORTS = (
   'manifest_ok',
+);
+
+# These platforms were copied from File::Spec
+my %platforms = (
+  MacOS   => 1,
+  MSWin32 => 1,
+  os2     => 1,
+  VMS     => 1,
+  epoc    => 1,
+  NetWare => 1,
+  symbian => 1,
+  dos     => 1,
+  cygwin  => 1,
 );
 
 # Looking at other Test modules this seems to be an ad-hoc standard
@@ -170,6 +184,17 @@ sub manifest_ok {
   my $closure = sub {
     # Trim off the package root to determine the relative path.
     my $path = File::Spec->abs2rel($File::Find::name, $root);
+
+    # Portably deal with different OSes
+    if ($platforms{$^O}) { # Check if we are on a non-Unix platform
+      # Get path info from File::Spec, split apart
+      my (undef, $dir, $file) = File::Spec->splitpath($path);
+      my @dir = File::Spec->splitdir($dir);
+
+      # Reconstruct the path in Unix-style
+      $dir = File::Spec::Unix->catdir(@dir);
+      $path = File::Spec::Unix->catpath(undef, $dir, $file);
+    }
 
     # Test that the path is a file and then make sure it's not skipped
     if (-f $path && !$manifest->skipped($path)) {

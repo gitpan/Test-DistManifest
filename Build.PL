@@ -3,7 +3,7 @@
 # Build.PL
 #  Script to build and install this distribution
 #
-# $Id: Build.PL 5639 2009-03-15 03:43:59Z FREQUENCY@cpan.org $
+# $Id: Build.PL 6602 2009-04-24 01:23:08Z FREQUENCY@cpan.org $
 #
 # All rights to this helper script are hereby disclaimed and its contents
 # released into the public domain by the author. Where this is not possible,
@@ -26,20 +26,21 @@ my $builder = Module::Build->new(
   create_packlist       => 1,
 
   # Maintain compatibility with ExtUtils::MakeMaker installations
-  create_makefile_pl    => 'traditional',
+  create_makefile_pl    => 'passthrough',
 
   requires => {
     'perl'              => 5.006,
 
     # Pragmatic and special modules
     'Carp'              => 1.04,
-    'version'           => 0,
+    'version'           => 0.76,
     'warnings'          => 0,
     'strict'            => 0,
 
     # File manipulation modules
     'Cwd'               => 0,
     'File::Spec'        => 0,
+    'File::Spec::Unix'  => 0,
     'File::Find'        => 0,
 
     # The tests are based on Test::More
@@ -47,7 +48,7 @@ my $builder = Module::Build->new(
     'Test::Builder'     => 0.86,
 
     # Other modules
-    'Module::Manifest'  => 0.05,
+    'Module::Manifest'  => 0.07,
   },
   build_requires => {
     # User tests for good functionality
@@ -63,7 +64,6 @@ my $builder = Module::Build->new(
     'Test::Signature'           => 1.10,
     'Test::Pod'                 => 1.14,
     'Test::Pod::Coverage'       => 1.04,
-    'Test::Prereq::Build'       => 1.036,
     'Test::Portability::Files'  => 0.05,
     'Test::MinimumVersion'      => 0.008,
   },

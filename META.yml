@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Test-DistManifest
-version: 1.001002
+version: 1.001003
 author:
   - 'Jonathan Yu <frequency@cpan.org>'
 abstract: |-
@@ -17,7 +17,8 @@ requires:
   Cwd: 0
   File::Find: 0
   File::Spec: 0
-  Module::Manifest: 0.05
+  File::Spec::Unix: 0
+  Module::Manifest: 0.07
   Test::Builder: 0.86
   Test::More: 0.62
   perl: 5.006
@@ -34,6 +35,8 @@ recommends:
   Test::Pod::Coverage: 1.04
   Test::Signature: 1.10
   Test::YAML::Meta: 0.11
+  Test::Portability::Files: 0.05
+  Test::MinimumVersion: 0.008
   Test::Prereq::Build: 1.036
   Test::Portability::Files: 0.05
   Test::MinimumVersion: 0.008
@@ -41,7 +44,7 @@ dynamic_config: 0
 provides:
   Test::DistManifest:
     file: lib/Test/DistManifest.pm
-    version: 1.001002
+    version: 1.001003
 generated_by: Module::Build version 0.3
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html

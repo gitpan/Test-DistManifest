@@ -3,7 +3,7 @@
 # t/01portability.t
 #  Tests if the distribution seems to be portable
 #
-# $Id: 02fallback.t 5245 2009-02-09 03:38:28Z FREQUENCY@cpan.org $
+# $Id: 01portability.t 5666 2009-03-16 17:06:48Z FREQUENCY@cpan.org $
 #
 # All rights to this test script are hereby disclaimed and its contents
 # released into the public domain by the author. Where this is not possible,

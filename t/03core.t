@@ -1,10 +1,9 @@
 #!/usr/bin/perl -T
 
-# t/02manifest-explicit.t
-#  Ensures MANIFEST file is up-to-date, when the files are specified
-#  explicitly.
+# t/03core.t
+#  Ensures the MANIFEST test output looks reasonable.
 #
-# $Id: 03core.t 5633 2009-03-14 20:00:03Z FREQUENCY@cpan.org $
+# $Id: 03core.t 5665 2009-03-16 16:19:40Z FREQUENCY@cpan.org $
 #
 # All rights to this test script are hereby disclaimed and its contents
 # released into the public domain by the author. Where this is not possible,

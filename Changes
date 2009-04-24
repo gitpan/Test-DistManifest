@@ -1,3 +1,52 @@
+2009-04-23  Jonathan Yu <frequency@cpan.org>
+
+	- Added Win32 compatibility code. Closes the Win32 compatibility bug (RT#44401)
+	- Updated Build.PL
+	- Added META.yml
+	- Changed to a passthrough Makefile instead of a classic one
+
+2009-04-06  Jonathan Yu <frequency@cpan.org>
+
+	Updated META.yml
+
+2009-03-25  Jonathan Yu <frequency@cpan.org>
+
+	- Updated version dependency for version.pm
+	- Fixed a typo in the README
+
+2009-03-16  Jonathan Yu <frequency@cpan.org>
+
+	- Removed version-specific stuff from the README so I can be lazy (it was out-of-date anyway)
+
+2009-03-16  Jonathan Yu <frequency@cpan.org>
+
+	- Removed prereq.t from the MANIFEST
+
+2009-03-16  Jonathan Yu <frequency@cpan.org>
+
+	- Removed use of Test::Prereq, because it needs to use CPAN to do its work
+
+2009-03-16  Jonathan Yu <frequency@cpan.org>
+
+	Fix OS detection routines
+
+2009-03-16  Jonathan Yu <frequency@cpan.org>
+
+	- Enable svn:keywords: LastChangedBy Revision Id
+
+2009-03-16  Jonathan Yu <frequency@cpan.org>
+
+	- Updated 03core.t (header was old)
+	- Fixed Test/DistManifest.pm (minor variable name change)
+
+2009-03-16  Jonathan Yu <frequency@cpan.org>
+
+	- Modified the module so that it works portably (even with Win32, and other platforms File::Spec supports)
+
+2009-03-15  Jonathan Yu <frequency@cpan.org>
+
+	- Added simple bug fix for MANIFEST testing under Windows.
+
 2009-03-14  Jonathan Yu <frequency@cpan.org>
 
 	Updated prerequisite information in Build.PL and META.yml
