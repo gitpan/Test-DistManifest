@@ -1,3 +1,15 @@
+2009-04-26  Jonathan Yu <frequency@cpan.org>
+
+	- Updated to version 1.1.4, prepare for next release
+
+2009-04-26  Jonathan Yu <frequency@cpan.org>
+
+	- Added .tmp to MANIFEST.SKIP
+
+2009-04-24  Jonathan Yu <frequency@cpan.org>
+
+	Added Build.bat to MANIFEST.SKIP for Win32 builds...
+
 2009-04-23  Jonathan Yu <frequency@cpan.org>
 
 	- Added Win32 compatibility code. Closes the Win32 compatibility bug (RT#44401)

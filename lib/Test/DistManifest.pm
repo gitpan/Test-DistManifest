@@ -1,7 +1,7 @@
 # Test::DistManifest
 #  Tests that your manifest matches the distribution as it exists.
 #
-# $Id: DistManifest.pm 6602 2009-04-24 01:23:08Z FREQUENCY@cpan.org $
+# $Id: DistManifest.pm 6700 2009-04-27 01:05:33Z FREQUENCY@cpan.org $
 #
 # Copyright (C) 2008-2009 by Jonathan Yu <frequency@cpan.org>
 #
@@ -21,11 +21,11 @@ exists, excluding those in your MANIFEST.SKIP
 
 =head1 VERSION
 
-Version 1.1.3 ($Id: DistManifest.pm 6602 2009-04-24 01:23:08Z FREQUENCY@cpan.org $)
+Version 1.1.4 ($Id: DistManifest.pm 6700 2009-04-27 01:05:33Z FREQUENCY@cpan.org $)
 
 =cut
 
-use version; our $VERSION = qv('1.1.3');
+use version; our $VERSION = qv('1.1.4');
 
 =head1 EXPORTS
 
