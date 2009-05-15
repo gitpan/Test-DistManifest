@@ -1,3 +1,13 @@
+2009-05-15  Jonathan Yu <frequency@cpan.org>
+
+	Oops, noted the version was bumped when it wasn't. Fixed now.
+
+2009-05-15  Jonathan Yu <frequency@cpan.org>
+
+	- Moved some small changes from MANIFEST.SKIP to CIRCULAR.SKIP
+	- Bumped version to 1.2.1
+	- This release is particularly important to get rid of Win32 test failures, where `Build.bat' is created instead of `Build'
+
 2009-05-14  Jonathan Yu <frequency@cpan.org>
 
 	These were some pretty important changes, bumped the version to 1.2.0 instead
