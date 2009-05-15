@@ -1,9 +1,9 @@
 #!/usr/bin/perl -T
 
-# t/03core.t
-#  Ensures the MANIFEST test output looks reasonable.
+# t/03warn-only.t
+#  Ensures the nonfatal mode works properly
 #
-# $Id: 03core.t 7088 2009-05-15 02:51:39Z FREQUENCY@cpan.org $
+# $Id: 03warn-only.t 7092 2009-05-15 03:32:37Z FREQUENCY@cpan.org $
 #
 # All rights to this test script are hereby disclaimed and its contents
 # released into the public domain by the author. Where this is not possible,
@@ -12,25 +12,20 @@
 use strict;
 use warnings;
 
-use Test::Builder::Tester tests => 10; # The sum of all subtests
+use Test::Builder::Tester tests => 5; # The sum of all subtests
 use Test::DistManifest;
 use Test::NoWarnings; # 1 test
 
-# If MANIFEST_WARN_ONLY is set, unset it
-if (exists($ENV{MANIFEST_WARN_ONLY})) {
-  delete($ENV{MANIFEST_WARN_ONLY});
-}
+# Set MANIFEST_WARN_ONLY to true
+$ENV{MANIFEST_WARN_ONLY} = 1;
 
-# This one is already tested as part of 02manifest.t
-#manifest_ok();
-
-manifest_ok('MANIFEST', 'MANIFEST.SKIP');
+# Run the same tests as 03core.t, but make sure they are all non-fatal now.
 
 # Run the test when MANIFEST is invalid but the MANIFEST.SKIP file is okay
 #  1 test
 test_out('not ok 1 - Parse MANIFEST or equivalent');
 test_out('ok 2 - Parse MANIFEST.SKIP or equivalent');
-test_out('not ok 3 - All files are listed in MANIFEST or skipped');
+test_out('ok 3 - All files are listed in MANIFEST or skipped');
 test_out('ok 4 - All files listed in MANIFEST exist on disk');
 test_diag('No such file or directory');
 test_fail(+1);
@@ -45,7 +40,7 @@ test_test(
 #  1 test
 test_out('ok 1 - Parse MANIFEST or equivalent');
 test_out('not ok 2 - Parse MANIFEST.SKIP or equivalent');
-test_out('not ok 3 - All files are listed in MANIFEST or skipped');
+test_out('ok 3 - All files are listed in MANIFEST or skipped');
 test_out('ok 4 - All files listed in MANIFEST exist on disk');
 test_diag('No such file or directory');
 test_out('ok 5 - No files are in both MANIFEST and MANIFEST.SKIP');
@@ -60,13 +55,13 @@ test_test(
 #  1 test
 test_out('ok 1 - Parse MANIFEST or equivalent');
 test_out('ok 2 - Parse MANIFEST.SKIP or equivalent');
-test_out('not ok 3 - All files are listed in MANIFEST or skipped');
-test_out('not ok 4 - All files listed in MANIFEST exist on disk');
+test_out('ok 3 - All files are listed in MANIFEST or skipped');
+test_out('ok 4 - All files listed in MANIFEST exist on disk');
 test_out('ok 5 - No files are in both MANIFEST and MANIFEST.SKIP');
 test_fail(+1);
 manifest_ok('MANIFEST.EXTRA', 'MANIFEST.SKIP');
 test_test(
-  name        => 'Fails when MANIFEST contains extra files',
+  name        => 'Succeeds even when MANIFEST contains extra files',
   skip_err    => 1,
 );
 

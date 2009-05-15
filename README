@@ -1,8 +1,7 @@
 NAME
-    Test::DistManifest - Tests that your MANIFEST matches the distribution
-    as it exists, excluding those in your MANIFEST.SKIP
+    Test::DistManifest - Verify MANIFEST/MANIFEST.SKIP as an author test
 
-$Id: README 5755 2009-03-25 19:13:03Z FREQUENCY@cpan.org $
+$Id: README 7058 2009-05-12 22:54:02Z FREQUENCY@cpan.org $
 
 DESCRIPTION
     This module provides a simple method of testing that a MANIFEST matches

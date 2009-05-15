@@ -1,3 +1,32 @@
+2009-05-14  Jonathan Yu <frequency@cpan.org>
+
+	These were some pretty important changes, bumped the version to 1.2.0 instead
+
+2009-05-14  Jonathan Yu <frequency@cpan.org>
+
+	Updated t/03warn-only.t test with new semantics (always fail if parsing fails)
+
+2009-05-14  Jonathan Yu <frequency@cpan.org>
+
+	- Note that circular dependencies and parsing errors will always be considered fatal, regardless of MANIFEST_WARN_ONLY
+	- Suppress refactoring requirement - even though manifest_ok is really complex, it doesn't make sense to exist in separate subs
+
+2009-05-14  Jonathan Yu <frequency@cpan.org>
+
+	Added t/03warn-only.t to MANIFEST
+
+2009-05-14  Jonathan Yu <frequency@cpan.org>
+
+	- Bumped version to 1.1.5
+	- Added new feature for nonfatal errors (see updated POD)
+	- Added tests for this new feature
+
+	There a problem still some bugs to be worked out.
+
+2009-05-12  Jonathan Yu <frequency@cpan.org>
+
+	- Cleaned up documentation (minor fixes)
+
 2009-04-26  Jonathan Yu <frequency@cpan.org>
 
 	- Updated to version 1.1.4, prepare for next release

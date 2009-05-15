@@ -1,7 +1,7 @@
 # Test::DistManifest
 #  Tests that your manifest matches the distribution as it exists.
 #
-# $Id: DistManifest.pm 6700 2009-04-27 01:05:33Z FREQUENCY@cpan.org $
+# $Id: DistManifest.pm 7093 2009-05-15 03:47:31Z FREQUENCY@cpan.org $
 #
 # Copyright (C) 2008-2009 by Jonathan Yu <frequency@cpan.org>
 #
@@ -16,16 +16,15 @@ use Carp ();
 
 =head1 NAME
 
-Test::DistManifest - Tests that your MANIFEST matches the distribution as it
-exists, excluding those in your MANIFEST.SKIP
+Test::DistManifest - Verify MANIFEST/MANIFEST.SKIP as an author test
 
 =head1 VERSION
 
-Version 1.1.4 ($Id: DistManifest.pm 6700 2009-04-27 01:05:33Z FREQUENCY@cpan.org $)
+Version 1.2.0 ($Id: DistManifest.pm 7093 2009-05-15 03:47:31Z FREQUENCY@cpan.org $)
 
 =cut
 
-use version; our $VERSION = qv('1.1.4');
+use version; our $VERSION = qv('1.2.0');
 
 =head1 EXPORTS
 
@@ -149,9 +148,42 @@ just a helpful test to remind you to update these files, using:
   $ make dist # For ExtUtils::MakeMaker
   $ ./Build dist # For Module::Build
 
+=head2 Non-Fatal Errors
+
+By default, errors in the B<MANIFEST> or B<MANIFEST.SKIP> files are treated
+as fatal, which really is the purpose of using C<Test::DistManifest> as part
+of your author test suite.
+
+In some cases this is not desirable behaviour, such as with the Debian Perl
+Group, which runs all tests - including author tests - as part of its module
+packaging process. This wreaks havoc because Debian adds its control files
+in C<debian/> downstream, and that directory or its files are generally not
+in B<MANIFEST.SKIP>.
+
+By setting the environment variable B<MANIFEST_WARN_ONLY> to a true value,
+errors will be non-fatal - they show up as diagnostic messages only, but all
+tests pass from the perspective of C<Test::Harness>.
+
+This can be used in a test script as:
+
+  $ENV{MANIFEST_WARN_ONLY} = 1;
+
+or from other shell scripts as:
+
+  export MANIFEST_WARN_ONLY=1
+
+Note that parsing errors in each file (B<MANIFEST> and B<MANIFEST.SKIP>) and
+circular dependencies will always be considered fatal. The author is not aware
+of any other use cases where other behaviour would be useful.
+
 =cut
 
+# It's not the simplest subroutine, but it's still not complex enough nor
+# useful enough in its parts to really be refactored.
+## no critic(ProhibitExcessComplexity)
 sub manifest_ok {
+  my $warn_only = $ENV{MANIFEST_WARN_ONLY} || 0;
+
   my $manifile = shift || 'MANIFEST';
   my $skipfile = shift || 'MANIFEST.SKIP';
 
@@ -231,7 +263,8 @@ sub manifest_ok {
     }
     $test->diag($path);
   }
-  $test->ok($flag, 'All files are listed in MANIFEST or skipped');
+  $test->ok($warn_only || $flag, 'All files are listed in MANIFEST or ' .
+    'skipped');
 
   # Reset the flag and test $manifest->files now
   $flag = 1;
@@ -254,7 +287,8 @@ sub manifest_ok {
     }
     $test->diag($path);
   }
-  $test->ok($flag, 'All files listed in MANIFEST exist on disk');
+  $test->ok($warn_only || $flag, 'All files listed in MANIFEST exist ' .
+    'on disk');
 
   # Test for circular dependencies
   $flag = (scalar @circular == 0) ? 1 : 0;
@@ -398,8 +432,7 @@ maintainer noted above.
 If you have a bug report or feature request, please file them on the CPAN
 Request Tracker at L<http://rt.cpan.org>. If you are able to submit your bug
 report in the form of failing unit tests, you are B<strongly> encouraged to do
-so. Regular bug reports are always accepted and appreciated via the CPAN bug
-tracker.
+so.
 
 =head1 SEE ALSO
 
