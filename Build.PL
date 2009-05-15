@@ -3,7 +3,7 @@
 # Build.PL
 #  Script to build and install this distribution
 #
-# $Id: Build.PL 6602 2009-04-24 01:23:08Z FREQUENCY@cpan.org $
+# $Id: Build.PL 7100 2009-05-15 14:25:59Z FREQUENCY@cpan.org $
 #
 # All rights to this helper script are hereby disclaimed and its contents
 # released into the public domain by the author. Where this is not possible,
@@ -33,7 +33,7 @@ my $builder = Module::Build->new(
 
     # Pragmatic and special modules
     'Carp'              => 1.04,
-    'version'           => 0.76,
+    'version'           => 0.74,
     'warnings'          => 0,
     'strict'            => 0,
 
@@ -45,7 +45,7 @@ my $builder = Module::Build->new(
 
     # The tests are based on Test::More
     'Test::More'        => 0.62,
-    'Test::Builder'     => 0.86,
+    'Test::Builder'     => 0.72,
 
     # Other modules
     'Module::Manifest'  => 0.07,
