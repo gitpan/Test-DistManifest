@@ -1,3 +1,51 @@
+2009-07-25  Jonathan Yu <frequency@cpan.org>
+
+	- Added coverage information
+	- Rewrote LICENSE and README slightly
+
+2009-07-25  Jonathan Yu <frequency@cpan.org>
+
+	Updated the checkmanifest.t example file and synopsis, it now checks Alias' flags (AUTOMATED_TESTING, RELEASE_TESTING) rather than TEST_AUTHOR
+
+2009-07-25  Jonathan Yu <frequency@cpan.org>
+
+	No longer test Perl::Critic during AUTOMATED_TESTING, only RELEASE_TESTING. Thanks to Elliot Shank for the discussion in a private mail.
+
+2009-07-25  Jonathan Yu <frequency@cpan.org>
+
+	Bump version to 1.2.3
+
+2009-07-25  Jonathan Yu <frequency@cpan.org>
+
+	- No more versioned dependency on version.pm
+	- Use a generic README, no longer produce one
+
+2009-07-25  Jonathan Yu <frequency@cpan.org>
+
+	- Changed critic.rc to ignore PodSpelling policy (fixes a bug in Debian, BTS#538115 -- when Pod::Spell and other dependencies are installed)
+	- Added generic README (no need to regenerate it)
+
+2009-06-14  Jonathan Yu <frequency@cpan.org>
+
+	"one dot only" in filenames. This breaks compatibility with OpenVMS.
+
+2009-06-14  Jonathan Yu <frequency@cpan.org>
+
+	Updated perlcriticrc with new preferences, removed "no critic" stuff for those in Test/DistManifest.pm
+
+2009-06-13  Jonathan Yu <frequency@cpan.org>
+
+	- Updated META.yml
+	- Added copyleft statements to test files
+
+2009-06-13  Jonathan Yu <frequency@cpan.org>
+
+	Minor documentation fix
+
+2009-05-15  Jonathan Yu <frequency@cpan.org>
+
+	Small POD fix
+
 2009-05-15  Jonathan Yu <frequency@cpan.org>
 
 	Minor problem forgetting to bump one of the version numbers in META.yml

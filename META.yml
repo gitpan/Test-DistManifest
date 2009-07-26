@@ -1,10 +1,9 @@
 --- #YAML:1.0
 name: Test-DistManifest
-version: 1.002002
+version: 1.002003
 author:
   - 'Jonathan Yu <frequency@cpan.org>'
-abstract: |-
-  Verify MANIFEST/MANIFEST.SKIP as an author test
+abstract: Verify MANIFEST/MANIFEST.SKIP as an author test
 license: perl
 resources:
   Ratings: http://cpanratings.perl.org/d/Test-DistManifest
@@ -22,28 +21,16 @@ requires:
   Test::More: 0.62
   perl: 5.006
   strict: 0
-  version: 0.74
+  version: 0
   warnings: 0
 build_requires:
   Test::Builder::Tester: 0
   Test::NoWarnings: 0.084
-recommends:
-  Test::Kwalitee: 1.01
-  Test::Perl::Critic: 1.01
-  Test::Pod: 1.14
-  Test::Pod::Coverage: 1.04
-  Test::Signature: 1.10
-  Test::YAML::Meta: 0.11
-  Test::Portability::Files: 0.05
-  Test::MinimumVersion: 0.008
-  Test::Prereq::Build: 1.036
-  Test::Portability::Files: 0.05
-  Test::MinimumVersion: 0.008
 dynamic_config: 0
 provides:
   Test::DistManifest:
     file: lib/Test/DistManifest.pm
-    version: 1.002002
+    version: 1.002003
 generated_by: Module::Build version 0.3
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html

@@ -3,11 +3,7 @@
 # t/03warn-only.t
 #  Ensures the nonfatal mode works properly
 #
-# $Id: 03warn-only.t 7092 2009-05-15 03:32:37Z FREQUENCY@cpan.org $
-#
-# All rights to this test script are hereby disclaimed and its contents
-# released into the public domain by the author. Where this is not possible,
-# you may use this file under the same terms as Perl itself.
+# $Id: 03warn-only.t 8204 2009-07-25 18:44:04Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;

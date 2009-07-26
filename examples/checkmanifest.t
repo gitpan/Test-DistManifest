@@ -3,15 +3,32 @@
 # examples/checkmanifest.t
 #  Ensures MANIFEST file is up-to-date
 #
-# $Id: checkmanifest.t 5633 2009-03-14 20:00:03Z FREQUENCY@cpan.org $
-#
-# All rights to this test script are hereby disclaimed and its contents
-# released into the public domain by the author. Where this is not possible,
-# you may use this file under the same terms as Perl itself.
+# $Id: checkmanifest.t 8214 2009-07-25 20:11:08Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
 
 use Test::DistManifest;
+
+unless ($ENV{AUTOMATED_TESTING} or $ENV{RELEASE_TESTING}) {
+  plan skip_all => 'Author tests not required for installation';
+}
+
+my %MODULES = (
+  'Test::DistManifest'  => 1.002002,
+  'Module::Manifest'    => 0.07,
+);
+
+while (my ($module, $version) = each %MODULES) {
+  eval "use $module $version";
+  next unless $@;
+
+  if ($ENV{RELEASE_TESTING}) {
+    die 'Could not load release-testing module ' . $module;
+  }
+  else {
+    plan skip_all => $module . ' not available for testing';
+  }
+}
 
 manifest_ok();

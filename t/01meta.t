@@ -3,24 +3,31 @@
 # t/01meta.t
 #  Tests that the META.yml meets the specification
 #
-# $Id: 01meta.t 5633 2009-03-14 20:00:03Z FREQUENCY@cpan.org $
-#
-# All rights to this test script are hereby disclaimed and its contents
-# released into the public domain by the author. Where this is not possible,
-# you may use this file under the same terms as Perl itself.
+# $Id: 01meta.t 8204 2009-07-25 18:44:04Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
 
 use Test::More;
 
-unless ($ENV{TEST_AUTHOR}) {
-  plan skip_all => 'Set TEST_AUTHOR to enable module author tests';
+unless ($ENV{AUTOMATED_TESTING} or $ENV{RELEASE_TESTING}) {
+  plan skip_all => 'Author tests not required for installation';
 }
 
-eval 'use Test::YAML::Meta';
-if ($@) {
-  plan skip_all => 'Test::YAML::Meta required to test META.yml';
+my %MODULES = (
+  'Test::CPAN::Meta'  => 0.13,
+);
+
+while (my ($module, $version) = each %MODULES) {
+  eval "use $module $version";
+  next unless $@;
+
+  if ($ENV{RELEASE_TESTING}) {
+    die 'Could not load release-testing module ' . $module;
+  }
+  else {
+    plan skip_all => $module . ' not available for testing';
+  }
 }
 
 plan tests => 2;

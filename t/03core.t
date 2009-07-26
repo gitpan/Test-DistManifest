@@ -3,11 +3,7 @@
 # t/03core.t
 #  Ensures the MANIFEST test output looks reasonable.
 #
-# $Id: 03core.t 7088 2009-05-15 02:51:39Z FREQUENCY@cpan.org $
-#
-# All rights to this test script are hereby disclaimed and its contents
-# released into the public domain by the author. Where this is not possible,
-# you may use this file under the same terms as Perl itself.
+# $Id: 03core.t 8204 2009-07-25 18:44:04Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
