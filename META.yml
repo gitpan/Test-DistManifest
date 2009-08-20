@@ -1,9 +1,9 @@
---- #YAML:1.0
+---
 name: Test-DistManifest
-version: 1.002003
+version: 1.003
 author:
   - 'Jonathan Yu <frequency@cpan.org>'
-abstract: Verify MANIFEST/MANIFEST.SKIP as an author test
+abstract: Author test that validates a package MANIFEST
 license: perl
 resources:
   Ratings: http://cpanratings.perl.org/d/Test-DistManifest
@@ -11,18 +11,10 @@ resources:
   license: http://dev.perl.org/licenses/
   repository: http://svn.ali.as/cpan/trunk/Test-DistManifest
 requires:
-  Carp: 1.04
-  Cwd: 0
-  File::Find: 0
-  File::Spec: 0
-  File::Spec::Unix: 0
   Module::Manifest: 0.07
   Test::Builder: 0.72
   Test::More: 0.62
   perl: 5.006
-  strict: 0
-  version: 0
-  warnings: 0
 build_requires:
   Test::Builder::Tester: 0
   Test::NoWarnings: 0.084
@@ -30,8 +22,8 @@ dynamic_config: 0
 provides:
   Test::DistManifest:
     file: lib/Test/DistManifest.pm
-    version: 1.002003
-generated_by: Module::Build version 0.3
+    version: 1.003
+generated_by: Module::Build version 0.280801
 meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

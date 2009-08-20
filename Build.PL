@@ -3,11 +3,7 @@
 # Build.PL
 #  Script to build and install this distribution
 #
-# $Id: Build.PL 8205 2009-07-25 18:59:45Z FREQUENCY@cpan.org $
-#
-# All rights to this helper script are hereby disclaimed and its contents
-# released into the public domain by the author. Where this is not possible,
-# you may use this file under the same terms as Perl itself.
+# $Id: Build.PL 8673 2009-08-20 03:41:42Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
@@ -30,18 +26,6 @@ my $builder = Module::Build->new(
 
   requires => {
     'perl'              => 5.006,
-
-    # Pragmatic and special modules
-    'Carp'              => 1.04,
-    'version'           => 0,
-    'warnings'          => 0,
-    'strict'            => 0,
-
-    # File manipulation modules
-    'Cwd'               => 0,
-    'File::Spec'        => 0,
-    'File::Spec::Unix'  => 0,
-    'File::Find'        => 0,
 
     # The tests are based on Test::More
     'Test::More'        => 0.62,

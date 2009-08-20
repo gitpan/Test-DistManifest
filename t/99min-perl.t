@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 
-# t/01kwalitee.t
-#  Uses the CPANTS Kwalitee metrics to test the distribution
+# t/99min-perl.t
+#  Tests that the minimum required Perl version matches META.yml
 #
-# $Id: 01kwalitee.t 8204 2009-07-25 18:44:04Z FREQUENCY@cpan.org $
+# $Id: 99min-perl.t 8674 2009-08-20 03:52:01Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
@@ -15,8 +15,8 @@ unless ($ENV{AUTOMATED_TESTING} or $ENV{RELEASE_TESTING}) {
 }
 
 my %MODULES = (
-  'Test::Kwalitee'          => 1.01,
-  'Module::CPANTS::Analyse' => 0.85,
+  'Test::MinimumVersion'  => 0.008,
+  'Perl::MinimumVersion'  => 1.20,
 );
 
 while (my ($module, $version) = each %MODULES) {
@@ -30,3 +30,5 @@ while (my ($module, $version) = each %MODULES) {
     plan skip_all => $module . ' not available for testing';
   }
 }
+
+all_minimum_version_from_metayml_ok();

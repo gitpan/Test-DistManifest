@@ -1,9 +1,9 @@
-#!/usr/bin/perl -T
+#!/usr/bin/perl
 
-# t/01pod.t
-#  Checks that POD commands are correct
+# t/99kwalitee.t
+#  Uses the CPANTS Kwalitee metrics to test the distribution
 #
-# $Id: 01pod.t 8204 2009-07-25 18:44:04Z FREQUENCY@cpan.org $
+# $Id: 99kwalitee.t 8673 2009-08-20 03:41:42Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
@@ -15,13 +15,9 @@ unless ($ENV{AUTOMATED_TESTING} or $ENV{RELEASE_TESTING}) {
 }
 
 my %MODULES = (
-  'Test::Pod'     => 1.26,
-  'Pod::Simple'   => 3.07,
+  'Test::Kwalitee'          => 1.01,
+  'Module::CPANTS::Analyse' => 0.85,
 );
-
-# Module::CPANTS::Kwalitee won't detect that we're using test modules as
-# author tests, so we convince it that we're loading it in the normal way.
-0 and require Test::Pod;
 
 while (my ($module, $version) = each %MODULES) {
   eval "use $module $version";
@@ -34,5 +30,3 @@ while (my ($module, $version) = each %MODULES) {
     plan skip_all => $module . ' not available for testing';
   }
 }
-
-all_pod_files_ok();

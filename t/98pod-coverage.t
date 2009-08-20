@@ -1,9 +1,9 @@
 #!/usr/bin/perl -T
 
-# t/01pod-coverage.t
+# t/98pod-coverage.t
 #  Ensures all subroutines are documented with POD
 #
-# $Id: 01pod-coverage.t 8204 2009-07-25 18:44:04Z FREQUENCY@cpan.org $
+# $Id: 98pod-coverage.t 8673 2009-08-20 03:41:42Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;

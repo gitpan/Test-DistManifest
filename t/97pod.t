@@ -1,9 +1,9 @@
 #!/usr/bin/perl -T
 
-# t/01meta.t
-#  Tests that the META.yml meets the specification
+# t/97pod.t
+#  Checks that POD commands are correct
 #
-# $Id: 01meta.t 8204 2009-07-25 18:44:04Z FREQUENCY@cpan.org $
+# $Id: 97pod.t 8673 2009-08-20 03:41:42Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
@@ -15,8 +15,13 @@ unless ($ENV{AUTOMATED_TESTING} or $ENV{RELEASE_TESTING}) {
 }
 
 my %MODULES = (
-  'Test::CPAN::Meta'  => 0.13,
+  'Test::Pod'     => 1.26,
+  'Pod::Simple'   => 3.07,
 );
+
+# Module::CPANTS::Kwalitee won't detect that we're using test modules as
+# author tests, so we convince it that we're loading it in the normal way.
+0 and require Test::Pod;
 
 while (my ($module, $version) = each %MODULES) {
   eval "use $module $version";
@@ -30,7 +35,4 @@ while (my ($module, $version) = each %MODULES) {
   }
 }
 
-plan tests => 2;
-
-# counts as 2 tests
-meta_spec_ok('META.yml', undef, 'META.yml matches the META-spec');
+all_pod_files_ok();
