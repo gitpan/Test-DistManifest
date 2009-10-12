@@ -1,8 +1,8 @@
 ---
 name: Test-DistManifest
-version: 1.003
+version: 1.004
 author:
-  - 'Jonathan Yu <frequency@cpan.org>'
+  - 'Jonathan Yu <jawnsy@cpan.org>'
 abstract: Author test that validates a package MANIFEST
 license: perl
 resources:
@@ -22,7 +22,7 @@ dynamic_config: 0
 provides:
   Test::DistManifest:
     file: lib/Test/DistManifest.pm
-    version: 1.003
+    version: 1.004
 generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

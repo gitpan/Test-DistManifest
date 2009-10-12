@@ -3,7 +3,7 @@
 # Build.PL
 #  Script to build and install this distribution
 #
-# $Id: Build.PL 8673 2009-08-20 03:41:42Z FREQUENCY@cpan.org $
+# $Id: Build.PL 9529 2009-10-04 04:34:32Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
@@ -13,7 +13,7 @@ use Module::Build;
 my $builder = Module::Build->new(
   module_name           => 'Test::DistManifest',
   license               => 'perl',
-  dist_author           => 'Jonathan Yu <frequency@cpan.org>',
+  dist_author           => 'Jonathan Yu <jawnsy@cpan.org>',
   dist_version_from     => 'lib/Test/DistManifest.pm',
   dynamic_config        => 0,
   create_readme         => 0,
