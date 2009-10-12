@@ -1,7 +1,7 @@
 # Test::DistManifest
 #  Tests that your manifest matches the distribution as it exists.
 #
-# $Id: DistManifest.pm 9529 2009-10-04 04:34:32Z FREQUENCY@cpan.org $
+# $Id: DistManifest.pm 9654 2009-10-12 14:36:19Z FREQUENCY@cpan.org $
 
 package Test::DistManifest;
 
@@ -15,11 +15,11 @@ Test::DistManifest - Author test that validates a package MANIFEST
 
 =head1 VERSION
 
-Version 1.004 ($Id: DistManifest.pm 9529 2009-10-04 04:34:32Z FREQUENCY@cpan.org $)
+Version 1.005 ($Id: DistManifest.pm 9654 2009-10-12 14:36:19Z FREQUENCY@cpan.org $)
 
 =cut
 
-our $VERSION = '1.004';
+our $VERSION = '1.005';
 $VERSION = eval $VERSION;
 
 =head1 EXPORTS
