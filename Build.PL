@@ -3,7 +3,7 @@
 # Build.PL
 #  Script to build and install this distribution
 #
-# $Id: Build.PL 9529 2009-10-04 04:34:32Z FREQUENCY@cpan.org $
+# $Id: Build.PL 10579 2009-12-22 01:16:57Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
@@ -20,9 +20,6 @@ my $builder = Module::Build->new(
   recursive_test_files  => 1,
   sign                  => 1,
   create_packlist       => 1,
-
-  # Maintain compatibility with ExtUtils::MakeMaker installations
-  create_makefile_pl    => 'passthrough',
 
   requires => {
     'perl'              => 5.006,

@@ -5,6 +5,7 @@ lib/Test/DistManifest.pm
 LICENSE
 MANIFEST			This list of files
 MANIFEST.SKIP
+META.yml
 README
 t/00signature.t
 t/01compile.t
@@ -19,6 +20,4 @@ t/99meta.t
 t/99min-perl.t
 t/circular
 t/extra
-Makefile.PL
-META.yml
 SIGNATURE    Added here by Module::Build

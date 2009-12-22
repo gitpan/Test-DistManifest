@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.55.
+signed via the Module::Signature module, version 0.61.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -12,24 +12,23 @@ the distribution may already have been compromised, and you should
 not run its Makefile.PL or Build.PL.
 
 -----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+Hash: SHA256
 
-SHA1 3660103cff8564692785193e4598ec70409b8350 Build.PL
-SHA1 f5551d2d231e0580f871049aff598eb17ab53d65 Changes
+SHA1 9029a833e63dd3a4ed8e66935f8829c2da25727d Build.PL
+SHA1 86b13b6c426fce1382d0d5366155e2ff92d7ba27 Changes
 SHA1 880bcb00f4ed6b1a0145f48a461f1e62a48f15f0 LICENSE
-SHA1 80a214fb1f831a2acea7b54129a563acf6417e2e MANIFEST
-SHA1 c4a234b4e7105a7e0c9940ecabc9097d54b0824b MANIFEST.SKIP
-SHA1 44396d651853d165dc778f45f47be2f545348c7e META.yml
-SHA1 6935d4c89ba1946c26e1bdbddc7c16d3929e5f7a Makefile.PL
+SHA1 afa7577f1fdc3cf2e5e4f6e9ea9b405d4ac06315 MANIFEST
+SHA1 00fed5572918028398abb60a54b2ebfff4e4f9de MANIFEST.SKIP
+SHA1 24de9ef8e8538df78f0bf37ac746576c3fd3b3e1 META.yml
 SHA1 5d25ac11e88eed4fcb23b203de96a1c1d48d3d24 README
 SHA1 10b9e261ba0670b3ec7754f9505606933e0d597d examples/checkmanifest.t
-SHA1 868a34b9d51e9e740960b4ba0ff7c56caa07fd12 lib/Test/DistManifest.pm
+SHA1 32a34aeeb17a7cbcf790c5470e6e0cba46530d02 lib/Test/DistManifest.pm
 SHA1 971a86e480d866d2ec9edaf472416500b2b90a92 t/00signature.t
 SHA1 e9d95aed0cdae6762200ca3d87d91cf6bff817b8 t/01compile.t
 SHA1 e6c740bb179966ff7dbffac2bb486a4be19e47b4 t/01portability.t
 SHA1 244e00a899d7a7789167ab0c3168e627b38aa4cb t/02manifest.t
-SHA1 32a4237bd7762e86757855a829df5aeb827145ed t/03core.t
-SHA1 fb3d044c6d5a425476526acacc9d1c32279fe38e t/03warn-only.t
+SHA1 792e8a5f2bd7bf9039c92be9da2716715718d2e3 t/03core.t
+SHA1 6b1346eb24d9f99a848c447764f1e008c08b7fa4 t/03warn-only.t
 SHA1 b55559812229859f7fc74ff10171f19daf310f63 t/97pod.t
 SHA1 c4e57e1e14ddd9d52f4cd2b35f5367e44c83283c t/98pod-coverage.t
 SHA1 e642edbaba3d75170f9c9885ae4529fb0a7e79dc t/99kwalitee.t
@@ -40,7 +39,17 @@ SHA1 91e8519cd6ba58a9a1810ec16c6b5b30f94edc25 t/extra
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAkrTDDgACgkQYYN9T93mai+1SgCeOY8BcLUUc9qcaPSJNSyRAO1+
-zpcAn0gjoje4aMY57wre/nkRz7PMRegu
-=f11F
+iQIcBAEBCAAGBQJLL/z3AAoJEPPC9oiiHLZITMgP/2sKk48yvPY1phtNd3ZWbWc3
+Kvjj464icYfi2H54LZI5+Dof6VRkMikp6NPxlGlgBvcRt73+oBb+z3J1rJd4q4VA
+i6oUM0supJb3uekUY6QiAlMTmoFnh6tHr87R6ab8clMvIJ/Tw4O+6I74zBLn3I4e
+3IrEDHr0damxIeLyf8kHGmkXFTBkbaKsblKxiHKXOzQ41ShtezWlnc786IjEK8Kn
+c2ZHM0u6eZYwesOLJj6ukvnQw0okN7vpNLup69Kkhg8s0jSbd5m/jdDzlFK4m3xN
+5KLx9BMmH0JIXznsfMLMhsjsF2tIZkk1/jIgQfc9w5eruf0iiD1uwWz11XZ8T841
+TlWgUoeSIeWoG3buW3zScTb+Z6bjEpMGa5WrFwrOoS2QzTGOYaqMsxBccITqtvpI
+Ok5ygOusP/PszwZTmjjyHdhnOGMFL5AiEB5VXXtV/HsdH0G1dPma70f60cRXlJy7
+U6BvCBiWVaac2ol9G9yKIVgilolPyQe1rT9OfVjv5ImcqkraXouSKQGAv4bd4KbY
+xDypfkXh+am3ACnkz2krti7iiVV1j19D6sGu0sGUCdOQyh/3Tr9p9KxkPAgR/XrN
+d3IZ9FOwp0ZcE425l7MyQqThDcj4i4dzu64p4A6kl8xKmZx/y/u3GiBChqWdHfGE
+5Kv51IX4O0NhAG93/xIN
+=8M6K
 -----END PGP SIGNATURE-----

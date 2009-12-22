@@ -1,7 +1,7 @@
 # Test::DistManifest
 #  Tests that your manifest matches the distribution as it exists.
 #
-# $Id: DistManifest.pm 9654 2009-10-12 14:36:19Z FREQUENCY@cpan.org $
+# $Id: DistManifest.pm 10576 2009-12-22 00:13:56Z FREQUENCY@cpan.org $
 
 package Test::DistManifest;
 
@@ -15,11 +15,11 @@ Test::DistManifest - Author test that validates a package MANIFEST
 
 =head1 VERSION
 
-Version 1.005 ($Id: DistManifest.pm 9654 2009-10-12 14:36:19Z FREQUENCY@cpan.org $)
+Version 1.006 ($Id: DistManifest.pm 10576 2009-12-22 00:13:56Z FREQUENCY@cpan.org $)
 
 =cut
 
-our $VERSION = '1.005';
+our $VERSION = '1.006';
 $VERSION = eval $VERSION;
 
 =head1 EXPORTS
@@ -104,6 +104,12 @@ Nothing exists in B<MANIFEST> that also matches a mask in B<MANIFEST.SKIP>,
 so as to avoid an unsatisfiable dependency conditions
 
 =back
+
+If there is no B<MANIFEST.SKIP> included in your distribution, this module
+will replicate the toolchain behaviour of using the default system-wide
+MANIFEST.SKIP file. To view the contents of this file, use the command:
+
+  $ perldoc -m ExtUtils::MANIFEST.SKIP
 
 =head1 SYNOPSIS
 
@@ -190,7 +196,7 @@ sub manifest_ok {
   my $manifest = Module::Manifest->new;
 
   unless ($test->has_plan) {
-    $test->plan(tests => 5);
+    $test->plan(tests => 4);
   }
 
   # Try to parse the MANIFEST and MANIFEST.SKIP files
@@ -206,9 +212,52 @@ sub manifest_ok {
     $manifest->open(skip     => $skipfile);
   };
   if ($@) {
+    $test->diag('Unable to parse MANIFEST.SKIP file:');
     $test->diag($!);
+    $test->diag('Using default skip data from ExtUtils::Manifest 1.58');
+    $manifest->parse( skip => [
+      # Version control files
+      '\bRCS\b',
+      '\bCVS\b',
+      '\bSCCS\b',
+      ',v$',
+      '\B\.svn\b',
+      '\B\.git\b',
+      '\B\.gitignore\b',
+      '\b_darcs\b',
+      '\B\.cvsignore$',
+      # Build remnants
+      '\bMANIFEST\.bak',
+      '\bMakefile$',
+      '\bblib/',
+      '\bMakeMaker-\d',
+      '\bpm_to_blib\.ts$',
+      '\bpm_to_blib$',
+      '\bblibdirs\.ts$',
+      '\bBuild$',
+      '\b_build/',
+      '\bBuild.bat$',
+      '\bBuild.COM$',
+      '\bBUILD.COM$',
+      '\bbuild.com$',
+      '^MYMETA\.',
+      # Temporary and backup files
+      '~$',
+      '\.old$',
+      '\#$',
+      '\b\.#',
+      '\.bak$',
+      '\.tmp$',
+      '\.#',
+      '\.rej$',
+      # Mac OSX metadata
+      '\B\.DS_Store',
+      '\B\._',
+      # Devel::Cover files
+      '\bcover_db\b',
+      '\bcovered\b',
+    ]);
   }
-  $test->ok(!$@, 'Parse MANIFEST.SKIP or equivalent');
 
   my @files;
   # Callback function called by File::Find
@@ -304,13 +353,13 @@ sub manifest_ok {
 
 =head1 GUTS
 
-This module internally plans 5 tests:
+This module internally plans 4 tests:
 
 =over
 
 =item 1
 
-B<MANIFEST> and B<MANIFEST.SKIP> can be parsed by C<Module::Manifest>
+B<MANIFEST> can be parsed by C<Module::Manifest>
 
 =item 2
 
@@ -367,12 +416,16 @@ Your name here ;-)
 
 =over
 
-=item * Thanks to Adam Kennedy E<lt>adamk@cpan.orgE<gt>, developer of
-Module::Manifest, which is used in this module.
+=item *
 
-=item * Thanks to Apocalypse E<lt>apocal@cpan.orgE<gt>, for helping me
-track down an obscure bug caused by circular dependencies: when files are
-expected by MANIFEST but explictly skipped by MANIFEST.SKIP.
+Thanks to Adam Kennedy for developing L<Module::Manifest>, which provides
+much of the core functionality for these tests.
+
+=item *
+
+Thanks to Apocalypse E<lt>apocal@cpan.orgE<gt>, for helping me track down
+an obscure bug caused by circular dependencies: when files are expected by
+MANIFEST but explictly skipped by MANIFEST.SKIP.
 
 =back
 
