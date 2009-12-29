@@ -1,6 +1,6 @@
 ---
 name: Test-DistManifest
-version: 1.008
+version: 1.009
 author:
   - 'Jonathan Yu <jawnsy@cpan.org>'
 abstract: Author test that validates a package MANIFEST
@@ -24,7 +24,7 @@ dynamic_config: 0
 provides:
   Test::DistManifest:
     file: lib/Test/DistManifest.pm
-    version: 1.008
+    version: 1.009
 generated_by: Module::Build version 0.35
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html

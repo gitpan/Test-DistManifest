@@ -13,6 +13,7 @@ t/01portability.t
 t/02manifest.t
 t/03core.t
 t/03warn-only.t
+t/04default.t
 t/97pod.t
 t/98pod-coverage.t
 t/99kwalitee.t
