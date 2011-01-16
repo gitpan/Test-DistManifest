@@ -1,9 +1,6 @@
 #!/usr/bin/perl -T
 
-# t/03core.t
-#  Ensures the MANIFEST test output looks reasonable.
-#
-# $Id: 03core.t 10670 2009-12-29 01:33:24Z FREQUENCY@cpan.org $
+# Ensures the MANIFEST test output looks reasonable
 
 use strict;
 use warnings;

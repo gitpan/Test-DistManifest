@@ -3,7 +3,7 @@
 # t/03warn-only.t
 #  Ensures the nonfatal mode works properly
 #
-# $Id: 03warn-only.t 10578 2009-12-22 01:12:10Z FREQUENCY@cpan.org $
+# $Id$
 
 use strict;
 use warnings;

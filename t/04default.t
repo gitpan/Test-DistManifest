@@ -1,9 +1,6 @@
 #!/usr/bin/perl -T
 
-# t/04default.t
-#  Test loading of a default MANIFEST.SKIP
-#
-# $Id: 04default.t 10670 2009-12-29 01:33:24Z FREQUENCY@cpan.org $
+# Test loading of a default MANIFEST.SKIP
 
 use strict;
 use warnings;

@@ -1,24 +1,23 @@
-Build.PL
 Changes
-examples/checkmanifest.t
-lib/Test/DistManifest.pm
 LICENSE
-MANIFEST			This list of files
+MANIFEST
 MANIFEST.SKIP
 META.yml
+Makefile.PL
 README
-t/00signature.t
+dist.ini
+examples/checkmanifest.t
+lib/Test/DistManifest.pm
 t/01compile.t
-t/01portability.t
 t/02manifest.t
 t/03core.t
 t/03warn-only.t
 t/04default.t
-t/97pod.t
-t/98pod-coverage.t
-t/99kwalitee.t
-t/99meta.t
-t/99min-perl.t
 t/circular
 t/extra
-SIGNATURE    Added here by Module::Build
+t/release-dist-manifest.t
+t/release-kwalitee.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t
+t/release-portability.t
+weaver.ini

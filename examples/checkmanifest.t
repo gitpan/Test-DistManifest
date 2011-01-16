@@ -2,8 +2,6 @@
 
 # examples/checkmanifest.t
 #  Ensures MANIFEST file is up-to-date
-#
-# $Id: checkmanifest.t 8214 2009-07-25 20:11:08Z FREQUENCY@cpan.org $
 
 use strict;
 use warnings;
