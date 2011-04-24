@@ -26,7 +26,7 @@ my %WriteMakefileArgs = (
     'Module::Manifest' => '0.07',
     'Test::Builder' => '0'
   },
-  'VERSION' => '1.010',
+  'VERSION' => '1.011',
   'test' => {
     'TESTS' => 't/*.t'
   }
