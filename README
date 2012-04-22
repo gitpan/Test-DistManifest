@@ -1,11 +1,11 @@
 
 
 This archive contains the distribution Test-DistManifest,
-version 1.011:
+version 1.012:
 
   Author test that validates a package MANIFEST
 
-This software is copyright (c) 2011 by Jonathan Yu <jawnsy@cpan.org>.
+This software is copyright (c) 2012 by Jonathan Yu <jawnsy@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

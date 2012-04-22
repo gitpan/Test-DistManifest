@@ -12,9 +12,9 @@ t/01compile.t
 t/02manifest.t
 t/03core.t
 t/03warn-only.t
-t/04default.t
 t/circular
 t/extra
+t/release-01-no-manifest.t
 t/release-dist-manifest.t
 t/release-kwalitee.t
 t/release-pod-coverage.t

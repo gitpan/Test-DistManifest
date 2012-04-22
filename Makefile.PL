@@ -2,33 +2,38 @@
 use strict;
 use warnings;
 
-BEGIN { require 5.008; }
+use 5.008;
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Author test that validates a package MANIFEST',
-  'AUTHOR' => 'Jonathan Yu <jawnsy@cpan.org>',
-  'BUILD_REQUIRES' => {
-    'Test::More' => '0.62',
-    'Test::NoWarnings' => '0.084'
+  "ABSTRACT" => "Author test that validates a package MANIFEST",
+  "AUTHOR" => "Jonathan Yu <jawnsy\@cpan.org>",
+  "BUILD_REQUIRES" => {
+    "Test::More" => "0.62",
+    "Test::NoWarnings" => "0.084"
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Test-DistManifest',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Test::DistManifest',
-  'PREREQ_PM' => {
-    'Module::Manifest' => '0.07',
-    'Test::Builder' => '0'
+  "DISTNAME" => "Test-DistManifest",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Test::DistManifest",
+  "PREREQ_PM" => {
+    "Carp" => 0,
+    "Cwd" => 0,
+    "ExtUtils::Manifest" => 0,
+    "File::Find" => 0,
+    "File::Spec" => 0,
+    "Module::Manifest" => "0.07",
+    "Test::Builder" => 0
   },
-  'VERSION' => '1.011',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "1.012",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

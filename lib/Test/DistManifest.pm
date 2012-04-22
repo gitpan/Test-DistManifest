@@ -1,12 +1,13 @@
 package Test::DistManifest;
-BEGIN {
-  $Test::DistManifest::VERSION = '1.011';
+{
+  $Test::DistManifest::VERSION = '1.012';
 }
 # ABSTRACT: Author test that validates a package MANIFEST
 
 use strict;
 use warnings;
 use Carp ();
+use ExtUtils::Manifest;
 
 
 # File management commands
@@ -83,49 +84,12 @@ sub manifest_ok {
   if ($@) {
     $test->diag('Unable to parse MANIFEST.SKIP file:');
     $test->diag($!);
-    $test->diag('Using default skip data from ExtUtils::Manifest 1.58');
-    $manifest->parse( skip => [
-      # Version control files
-      '\bRCS\b',
-      '\bCVS\b',
-      '\bSCCS\b',
-      ',v$',
-      '\B\.svn\b',
-      '\B\.git\b',
-      '\B\.gitignore\b',
-      '\b_darcs\b',
-      '\B\.cvsignore$',
-      # Build remnants
-      '\bMANIFEST\.bak',
-      '\bMakefile$',
-      '\bblib/',
-      '\bMakeMaker-\d',
-      '\bpm_to_blib\.ts$',
-      '\bpm_to_blib$',
-      '\bblibdirs\.ts$',
-      '\bBuild$',
-      '\b_build/',
-      '\bBuild.bat$',
-      '\bBuild.COM$',
-      '\bBUILD.COM$',
-      '\bbuild.com$',
-      '^MYMETA\.',
-      # Temporary and backup files
-      '~$',
-      '\.old$',
-      '\#$',
-      '\b\.#',
-      '\.bak$',
-      '\.tmp$',
-      '\.#',
-      '\.rej$',
-      # Mac OSX metadata
-      '\B\.DS_Store',
-      '\B\._',
-      # Devel::Cover files
-      '\bcover_db\b',
-      '\bcovered\b',
-    ]);
+    $test->diag('Using default skip data from ExtUtils::Manifest ' . ExtUtils::Manifest->VERSION);
+
+    open my $fh, '<', $ExtUtils::Manifest::DEFAULT_MSKIP
+        or die "Cannot open $ExtUtils::Manifest::DEFAULT_MSKIP: $!";
+    chomp(my @manifest_content = <$fh>);
+    $manifest->parse( skip => \@manifest_content );
   }
 
   my @files;
@@ -232,7 +196,7 @@ Test::DistManifest - Author test that validates a package MANIFEST
 
 =head1 VERSION
 
-version 1.011
+version 1.012
 
 =head1 SYNOPSIS
 
@@ -449,7 +413,7 @@ Jonathan Yu <jawnsy@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Jonathan Yu <jawnsy@cpan.org>.
+This software is copyright (c) 2012 by Jonathan Yu <jawnsy@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
